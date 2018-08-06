@@ -37,6 +37,7 @@ import sys
 
 from distutils.core import setup
 from distutils.extension import Extension
+from Cython.Build import cythonize
 
 try:
     from Cython.Distutils import build_ext
@@ -69,7 +70,7 @@ and install with:
     sys.exit(1)
 
 
-ext_modules = [Extension("rfoo.marsh", ["rfoo/marsh.pyx"])]
+ext_modules = cythonize([Extension("rfoo.marsh", ["rfoo/marsh.pyx"])])
 
 
 setup(
@@ -82,7 +83,10 @@ setup(
     packages = ['rfoo', 'rfoo.utils'],
     scripts = ['scripts/rconsole'],
     cmdclass = {'build_ext': build_ext},
-    ext_modules = ext_modules
+    ext_modules = ext_modules,
+    install_requires=[
+        'Cython'
+    ]
 )
 
 
