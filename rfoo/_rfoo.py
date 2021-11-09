@@ -98,7 +98,7 @@ CALL = 0
 NOTIFY = 1
 
 # Compatible way to represent binary 'i' across Py2.x Py3.x.
-INTEGER = 'i'.encode()[0]
+INTEGER = 233 #python3 byte type int ;python2 INTEGER = 'i'.encode()[0]
 
 
 
